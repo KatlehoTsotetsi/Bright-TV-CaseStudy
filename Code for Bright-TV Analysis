@@ -1,0 +1,57 @@
+select
+    *
+from
+    viewership;
+select
+    channel2,
+    count(userid) as number_of_viewers
+from
+    viewership
+    group by channel2
+    order by number_of_viewers desc
+    limit 10;
+
+select distinct date from viewership;
+
+select distinct date,
+count(userid) as number_of_viewers
+from viewership
+group by 1;
+
+select* from user_profiles;
+
+select distinct race, count(userid) as Viewers_by_Race
+from user_profiles
+group by race
+order by viewers_by_Race desc;
+
+select distinct gender, count(userid) as Viewers
+from user_profiles
+group by gender
+order by Viewers desc;
+
+select count(distinct userid) as No_of_subscribers
+from user_profiles;
+
+select count(email) as User_profiles
+from user_profiles;
+
+select gender,
+case
+when age BETWEEN 0 AND 12 then 'Kids'
+when age between 13 and 19 then 'Teenager'
+when age between 20 and 30 then 'Youth'
+when age between 31 and 59 then 'Adult'
+else 'Senior'
+end as Age_category
+from user_profiles;
+
+select province, count(userid) as Viewers_by_Province
+from user_profiles
+group by 1
+order by Viewers_by_Province desc;
+
+select age,count(age) as Total
+from user_profiles
+group by age
+order by Total desc;
